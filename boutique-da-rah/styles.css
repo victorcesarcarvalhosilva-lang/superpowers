@@ -225,32 +225,28 @@ a { color: inherit; }
   position: relative;
   aspect-ratio: 4 / 5;
   border-radius: 28px;
-  background:
-    linear-gradient(155deg, var(--wine-800), var(--wine-950) 60%);
+  background: linear-gradient(155deg, var(--wine-800), var(--wine-950) 60%);
   box-shadow: var(--shadow-lift);
   overflow: hidden;
 }
-.hero-visual::before,
+.hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 .hero-visual::after {
   content: "";
   position: absolute;
-  border-radius: 50%;
-}
-.hero-visual::before {
-  width: 220px; height: 220px;
-  right: -60px; top: -60px;
-  background: radial-gradient(circle, rgba(185,138,62,0.55), transparent 70%);
-}
-.hero-visual::after {
-  width: 260px; height: 260px;
-  left: -80px; bottom: -80px;
-  background: radial-gradient(circle, rgba(250,245,238,0.14), transparent 70%);
+  inset: 0;
+  background: linear-gradient(190deg, rgba(43,19,27,0) 45%, rgba(24,11,15,0.82) 100%);
 }
 .hero-visual-tag {
   position: absolute;
   left: 24px;
   bottom: 24px;
   right: 24px;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -358,7 +354,13 @@ a { color: inherit; }
 .drop-card:hover .drop-swatch {
   transform: scale(1.04);
 }
-.drop-swatch::after {
+.drop-swatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.drop-swatch:not(:has(img))::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -450,7 +452,17 @@ a { color: inherit; }
   background: linear-gradient(150deg, var(--swatch-a, var(--wine-700)), var(--swatch-b, var(--brass-500)));
   overflow: hidden;
 }
-.item-media::after {
+.item-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+.item-card:hover .item-media img {
+  transform: scale(1.05);
+}
+.item-media:not(:has(img))::after {
   content: "";
   position: absolute;
   inset: 0;
