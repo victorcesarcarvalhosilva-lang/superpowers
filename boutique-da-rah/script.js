@@ -16,7 +16,16 @@
       el.setAttribute("href", waLink(DEFAULT_MESSAGE));
     });
 
-  // Per-item "Reservar essa peça" buttons
+  // Per-item "Comprar" buttons
+  document.querySelectorAll(".buy-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.dataset.item || "uma peça do catálogo";
+      const message = `Olá! Vi no site da Boutique da Rah e quero comprar: ${item}. Podem confirmar disponibilidade, preço e forma de pagamento?`;
+      window.open(waLink(message), "_blank", "noopener");
+    });
+  });
+
+  // Per-item "Reservar" buttons
   document.querySelectorAll(".reserve-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       const item = btn.dataset.item || "uma peça do catálogo";
